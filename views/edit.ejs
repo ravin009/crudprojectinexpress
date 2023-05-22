@@ -1,0 +1,34 @@
+<%- include('./partials/header.ejs')%>
+ <div class="container">
+   <div>
+    <!--Navbar Menus and Search bar are dummy here! just for looks(not in use)-->
+    <nav class="navbar navbar-dark bg-danger" >
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Faculty</a>
+      <a href="#">Contact us</a>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </nav>
+    <!--Heading -->
+      <h1>Update</h1>
+      <!--Form for Update after clicking on Edit button filling (re-entered) all data You will need to click on this Form's Update button then data updataion will be completed and you will be redirected on main Page and can see updataed data-->
+      <form method="POST" action="/student/update/<%= data._id%>">
+        <div class="form-group">
+          <label >Student Name</label><br>
+          <input type="text" class=col-sm-3 class="form-control" id="stuname" name="name" value="<%=data.name%>"><br>
+          <label for="">Age</label><br>
+          <input type="text" class=col-sm-3 class="form-control" id="age" name="age" value="<%=data.age%>"><br>
+          <label for="">Fees</label><br>
+          <input type="number" class=col-sm-3 class="form-control" id="fees" name="fees" value="<%=data.fees%>">
+        </div>
+        <br> 
+        </div>
+        <!--This the Update button you have to click on this for Update data after filling (re-entered) data in form-->
+        <button type="submit" class="btn btn-primary">Update</button>
+        <!--Back to Home Just a dummy button for looks, that UI coulf look better but You can use this button according to your need you can redirect with a path like if you want to gp back without Updating data ( but i did not activate this button)-->
+        <button type="submit" class="btn btn-primary">Back to home</button>
+      </form>
+   </div>
+   
+<%- include('./partials/footer.ejs')%>
+

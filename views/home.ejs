@@ -1,0 +1,83 @@
+<%- include('./partials/header.ejs')%>
+ <div class="container">
+   <div>
+    <!--Navbar Menus and Search bar are dummy here! just for looks(not in use) just focus on 'CRUD' operation-->
+    <nav class="navbar navbar-dark bg-danger" >
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Faculty</a>
+      <a href="#">Contact us</a>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </nav>
+    <!--Form Heading-->
+      <h1>ADD STUDENTS</h1>
+      <!--Form for collecting data-->
+      <form method="POST">
+        <div class="form-group">
+          <label >Student Name</label><br>
+          <input type="text" class=col-sm-3 class="form-control" id="name" name="name" autocomplete="off">
+        <div class="form-group">
+          <label for="">Age</label><br>
+          <input type="text" class=col-sm-3 class="form-control" id="age" name="age" autocomplete="off"><br>
+          <label for="">Fees</label><br>
+          <input type="number" class=col-sm-3 class="form-control" id="fees" name="fees" autocomplete="off">
+        </div>
+        <br>
+         
+        </div>
+        <!--Button for Adding or Submiting Data-->
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+   </div>
+   <!--Table for Displaying Data on Screen Displayed Data also will be saved in Database-->
+   <table class="table">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Student Name</th>
+        <th>Age</th>
+        <th>Fees</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Created a variable for serial No. var i = 1  it will be auto increased or Adjusted while adding or deleting data in S. No. Column-->
+      <% var i = 1%>
+
+      <!--forEach loop for Displaying Action Deleted or Added Each data in each column-->
+      <% data.forEach((item)=>{ %>
+        <tr>
+          <td><%= i++%></td><!-- abobe Declared and initialized Variable for increament S.No. Increament-->
+
+          <!--Extracting data for display using forEach-->
+          <td><%=item.name%></td>
+          <td><%=item.age%></td>
+          <td><%=item.fees%></td>
+          <td>
+
+            <!--Form for Edit button when you click on this button you will be redirected on Edit page by using document id like (item._id)-->
+           <form class="btnform" action="/student/edit/<%= item._id%>" method="get">
+            <button class="button" type="submit" >
+              <!--You will have to add Google Fonts for see Icon of Edit button and internet shuld be connnected otherwise you can just see edit simple button but it will work-->
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+           </form> 
+            
+           <!--Form for Delete button when you click on this button, It will delete the document by using document id like (item._id)-->
+           <form class="btnform" action="/student/delete/<%= item._id%>" method="POST">
+            <button type="submit">
+              <!--You will have to add Google Fonts for see Icon of Edit button and internet shuld be connnected otherwise you can just see delete simple button but it will work-->
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+           </form>  
+          
+          </td>
+        </tr>
+       
+     <% }) %>
+  
+    </tbody>
+  </table>
+ </div>
+<%- include('./partials/footer.ejs')%>
+
