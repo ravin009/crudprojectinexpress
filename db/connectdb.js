@@ -16,5 +16,5 @@ const connectDB = async (DATABASE_URL) => {
     }
 }
 
-//Exporting connectDB using ES6 and will call in app.js and pass DATABASE_URL
+//Exporting connectDB using ES6 methods and will call in app.js and pass DATABASE_URL
 export default connectDB
